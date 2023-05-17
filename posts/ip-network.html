@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="dns-prefetch" href="http://cloudsmiles.site">
+  <title>IP初全认识 | cloudsmiles的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近在通读《TCP/IP详解 卷一》，对于计算机网络有了新的认识，而且大学的时候也没好好弄懂个中的原理，趁着这个机会重新整理所学。这本书可以称作教科书之典范，内容从网络的起源到现在广泛使用的技术，从表面的精炼解释到本质的运作，不论从事计算机何个职业，我觉得也应该拜访一下这本书，因为网络是计算机的发展必不可缺的，等同于人类需要交流协作才形成了世界，甚至是更远的未来。">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IP初全认识">
+<meta property="og:url" content="http://cloudsmiles.site/posts/ip-network.html">
+<meta property="og:site_name" content="cloudsmiles的博客">
+<meta property="og:description" content="最近在通读《TCP/IP详解 卷一》，对于计算机网络有了新的认识，而且大学的时候也没好好弄懂个中的原理，趁着这个机会重新整理所学。这本书可以称作教科书之典范，内容从网络的起源到现在广泛使用的技术，从表面的精炼解释到本质的运作，不论从事计算机何个职业，我觉得也应该拜访一下这本书，因为网络是计算机的发展必不可缺的，等同于人类需要交流协作才形成了世界，甚至是更远的未来。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2023-05-17T06:16:09.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IP初全认识">
+<meta name="twitter:description" content="最近在通读《TCP/IP详解 卷一》，对于计算机网络有了新的认识，而且大学的时候也没好好弄懂个中的原理，趁着这个机会重新整理所学。这本书可以称作教科书之典范，内容从网络的起源到现在广泛使用的技术，从表面的精炼解释到本质的运作，不论从事计算机何个职业，我觉得也应该拜访一下这本书，因为网络是计算机的发展必不可缺的，等同于人类需要交流协作才形成了世界，甚至是更远的未来。">
+  
+    <link rel="alternative" href="/atom.xml" title="cloudsmiles的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #2E95F6"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/avatar.jpg" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cloudsmiles</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">屠龙勇士终被恶龙吞噬</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/杂记/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #2E95F6"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">cloudsmiles</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>屠龙勇士终被恶龙吞噬<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/杂记/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-ip-network" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      IP初全认识
+    </h1>
+  
+
+        
+        <a href="/posts/ip-network.html" class="archive-article-date">
+  	<time datetime="2018-05-04T14:43:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在通读<a href="https://book.douban.com/subject/1088054/" target="_blank" rel="noopener">《TCP/IP详解 卷一》</a>，对于计算机网络有了新的认识，而且大学的时候也没好好弄懂个中的原理，趁着这个机会重新整理所学。这本书可以称作教科书之典范，内容从网络的起源到现在广泛使用的技术，从表面的精炼解释到本质的运作，不论从事计算机何个职业，我觉得也应该拜访一下这本书，因为网络是计算机的发展必不可缺的，等同于人类需要交流协作才形成了世界，甚至是更远的未来。</p>
+<p><hr><br><a id="more"></a></p>
+<h2 id="1-IP地址结构"><a href="#1-IP地址结构" class="headerlink" title="1. IP地址结构"></a>1. IP地址结构</h2><p>Internet中使用的网络层地址，又称为IP地址。IP地址我们都很熟悉， 它是用于定位整个Internet系统中的设备，所以一台设备连接到全球性的Internet时，为它们分配地址需要协调，这样就不会重复使用网络中的其他地址。而通常个人用户是由 <a href="https://baike.baidu.com/item/ISP/10152#viewPageContent" target="_blank" rel="noopener">ISP</a> 分配地址，通过支付费用来获取地址。</p>
+<p>IP地址分为IPv4和IPv6（本文只针对广泛应用的IPv4作说明，以下IP专有名词也默认指代IPv4）。IP地址由32位二进制数组成，它也可以用<strong>点分四组</strong>方式，用四个十进制数来表示，如下图所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">点分四组表示</th>
+<th style="text-align:center">二进制表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1.2.3.4</td>
+<td style="text-align:center">00000001 00000010 00000011 00000100</td>
+</tr>
+<tr>
+<td style="text-align:center">10.0.0.255</td>
+<td style="text-align:center">00001010 00000000 00000000 11111111</td>
+</tr>
+</tbody>
+</table>
+<p>大部分的IP地址用于识别连接Internet或某些专用内联网的计算机网络接口，这些地址被称为<strong>单播地址</strong>。除了单播地址之外，其他类型的地址包括广播，组播和任播地址，它们可能涉及到多个接口，代表多个地址。<br><br></p>
+<h2 id="2-分类寻址"><a href="#2-分类寻址" class="headerlink" title="2. 分类寻址"></a>2. 分类寻址</h2><p>最初定义Internet地址结构的时，每个单播IP地址都有一个网络部分，用于识别哪个网络，以及一个主机地址，用于识别该网络下的特定主机。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">-</th>
+<th style="text-align:center">-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">网络位（x）</td>
+<td style="text-align:center">主机位 （32-x）</td>
+</tr>
+</tbody>
+</table>
+<p>由于实际使用中，不同的网络需要不同数量的主机，而每台主机需要唯一的IP地址，所以就根据不同大小的IP地址空间划分成不同的类，以适应不同的网络和站点，如下图所示：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th style="text-align:center">高序位</th>
+<th style="text-align:center">网络号位</th>
+<th style="text-align:center">主机号位</th>
+<th style="text-align:center">地址范围</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">0.0.0.0 ~ 127.255.255.255</td>
+<td style="text-align:center">单播/特殊</td>
+</tr>
+<tr>
+<td>B</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">128.0.0.0 ~ 191.255.255.255</td>
+<td style="text-align:center">单播/特殊</td>
+</tr>
+<tr>
+<td>C</td>
+<td style="text-align:center">110</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">192.0.0.0 ~ 223.255.255.255</td>
+<td style="text-align:center">单播/特殊</td>
+</tr>
+<tr>
+<td>D</td>
+<td style="text-align:center">1110</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">224.0.0.0 ~ 239.255.255.255</td>
+<td style="text-align:center">组播</td>
+</tr>
+<tr>
+<td>E</td>
+<td style="text-align:center">1111</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">240.0.0.0 ~ 255.255.255.255</td>
+<td style="text-align:center">保留</td>
+</tr>
+</tbody>
+</table>
+<p>比如C类的网络，因为主机号位是8，最多只能分配256台主机，但是网络位有24位，有超过200万的C类网络号可以使用。同理一个站点分配了一个A类网络号 18.0.0.0，其中有2^24个地址分配给主机，（范围 18.0.0.0 ~ 18.255.255.255）,但整个网络只有127个A类地址，所以A类地址尤为短缺。<br><br></p>
+<h2 id="3-子网寻址"><a href="#3-子网寻址" class="headerlink" title="3. 子网寻址"></a>3. 子网寻址</h2><p>Internet发展初期遇到了一个困难，就是很难为接入的新网段分配一个新的网络号，而且随着局域网（LAN）的增加，这个问题更为棘手，所以人们自然而然地想更加好的利用原来分配的网络号的主机地址空间，由站点人员进行进一步划分子网。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">-</th>
+<th style="text-align:center">-</th>
+<th style="text-align:center">-</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">网络位 （x）</td>
+<td style="text-align:center">子网位 （y）</td>
+<td style="text-align:center">主机位 （32-x-y）</td>
+</tr>
+</tbody>
+</table>
+<p>子网的概念只是相对一个站点自身而言，Internet的其他部分还是只看到网络号，所以本质上来说，子网寻为IP地址结构增加了一个额外部分，但它没有为地址增加长度。<br><br></p>
+<h3 id="3-1-子网掩码"><a href="#3-1-子网掩码" class="headerlink" title="3.1 子网掩码"></a>3.1 子网掩码</h3><p><strong>子网掩码是由一台主机或路由器使用的分配位，如何以确定如何从一台主机对应IP地址中获得网络和子网信息</strong>。子网掩码也是以IPv4地址相同的方式（即点分十进制）编写。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">点分四组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">地址</td>
+<td style="text-align:center"><strong>1</strong>0000000 00<strong>1</strong>00000 0000000<strong>1</strong> 00001110</td>
+<td style="text-align:center">128.32.1.14</td>
+</tr>
+<tr>
+<td style="text-align:center">掩码</td>
+<td style="text-align:center"><strong>1</strong>1111111 11<strong>1</strong>11111 1111111<strong>1</strong> 00000000</td>
+<td style="text-align:center">255.255.255.0(/24)</td>
+</tr>
+<tr>
+<td style="text-align:center">结果</td>
+<td style="text-align:center"><strong>1</strong>0000000 00<strong>1</strong>00000 0000000<strong>1</strong> 00000000</td>
+<td style="text-align:center">128.32.1.0</td>
+</tr>
+</tbody>
+</table>
+<p>如上图所示，如果一个主机IP地址是 128.32.1.14，子网掩码是 255.255.255.0 ，两个地址进行按位与操作，得到 <u>128.32.1.0/24</u> 前缀（网络/子网标识符，后面数字代表前缀长度），也确定了主机所在的子网。所以子网掩码是用来解决一个站点内部的子网识别问题。<br><br></p>
+<h3 id="3-2-广播地址"><a href="#3-2-广播地址" class="headerlink" title="3.2 广播地址"></a>3.2 广播地址</h3><p>在每个IPv4子网中，一个特殊地址被保留作为子网广播地址。子网广播地址通过将IP地址的网络/子网部分设置为适当值，主机部分所有位设置为1而成。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">名称</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">点分四组</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">地址</td>
+<td style="text-align:center">10000000 00100000 00000001 <strong>00001110</strong></td>
+<td style="text-align:center">128.32.1.14</td>
+</tr>
+<tr>
+<td style="text-align:center">掩码取反</td>
+<td style="text-align:center">00000000 00000000  00000000 <strong>11111111</strong></td>
+<td style="text-align:center">0.0.0.255</td>
+</tr>
+<tr>
+<td style="text-align:center">或的结果</td>
+<td style="text-align:center">10000000 00100000 00000001 <strong>11111111</strong></td>
+<td style="text-align:center">128.32.1.255</td>
+</tr>
+</tbody>
+</table>
+<p>如上图所示，子网 128.32.1.0/24 的子网广播地址是 <u>128.32.1.255</u>。从历史上来看，如果使用像 128.32.1.255 这种地址作为目的地址，也被称为<strong>定向广播</strong>（directed-broadcast）。至少在理论上，外界可以发送以 128.32.1.255 为目的地址的数据报，通过Internet路由直至到达目标子网，再作为一组广播数据报发送给子网中所有的主机。所以定向广播会有安全问题，一般在路由器中默认不进行转发。</p>
+<p>除了子网广播地址，还要一个特殊用途地址 <u>255.255.255.255</u> 被保留为本地网络广播，也被称为<strong>有限广播</strong>（limited-Broadcasting）。这种地址，路由器不会进行转发，虽然不被转发，但是它可以通过链路层的广播，发送同个物理网络的所有主机，所以这种广播不需要路由器。当主机不知道自己所在的网络时，就会采用有限广播方式。</p>
+<p>定向广播也有本地和非本地之分，这个回答 <a href="https://www.zhihu.com/question/20643350?sort=created" target="_blank" rel="noopener">如何更好地理解广播路由与链路层的广播之间的区别？</a> 很清晰的区分了网络层上广播的区别，当没有使用上路由进行广播时，就需要链路层的广播。链路层的广播等到以后的篇章再细说。<br><br></p>
+<h2 id="4-CIDR和聚合"><a href="#4-CIDR和聚合" class="headerlink" title="4. CIDR和聚合"></a>4. CIDR和聚合</h2><p>20世纪90年代，采用子网寻址缓解增长带来的痛苦后，Internet又要开始面临更加严重的挑战：</p>
+<ol>
+<li>到1994年，一半以上的B类地址已被分配。B类地址空间预计在1995年被消耗殆尽。</li>
+<li>32位的IPv4地址被认为不足以支撑21世纪的预期规模。</li>
+<li>全球性路由表的条目数（每个网络号对应一条），1995年大约为65000个条目，随着越来越多A类，B类和C类路由条目出现，路由性能将受到影响。</li>
+</ol>
+<p>IPv6被设想用来解决问题2，因为IPv6地址为128位，地址空间足以支撑更大的规模，同时  <a href="https://baike.baidu.com/item/DHCP/218195?fr=aladdin&amp;fromid=11165431&amp;fromtitle=%EF%BC%A4%EF%BC%A8%EF%BC%A3%EF%BC%B0" target="_blank" rel="noopener">DHCP</a> 的出现也缓解了地址的短缺。<br><br></p>
+<h3 id="4-1-前缀与CIDR"><a href="#4-1-前缀与CIDR" class="headerlink" title="4.1 前缀与CIDR"></a>4.1 前缀与CIDR</h3><p>为了解决问题1，分类寻址方案通过改进，扩展路由Internet路由系统以支持<strong>无类别域间路由</strong>（Classless Inter-Domain Routing），即  <a href="https://baike.baidu.com/item/%E6%97%A0%E7%B1%BB%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1/240168?fr=aladdin&amp;fromid=3695195&amp;fromtitle=CIDR" target="_blank" rel="noopener">CIDR</a>。这提供了一种方便的分配连续地址范围的方式，包含多于255台但少于65536台主机，也就是说不局限于单个B类或C类网络号可分配给站点。</p>
+<p>使用CIDR，需要一个类似于子网掩码的掩码，有时也被称作为CIDR掩码。但CIDR掩码不再局限于一个站点内，而是对于全球性的路由都是可见的。通过CIDR掩码，得到一个数字组合，被称作为<strong>网络前缀</strong>，用于IPv4和IPv6地址管理。</p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>前缀（二进制）</th>
+<th>地址范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0.0.0/0</td>
+<td>00000000 00000000 00000000 00000000</td>
+<td>0.0.0.0 ~ 255.255.255.255</td>
+</tr>
+<tr>
+<td>128.0.0.0/1</td>
+<td><strong>1</strong>0000000 00000000 00000000 00000000</td>
+<td>128.0.0.0 ~ 255.255.255.255</td>
+</tr>
+<tr>
+<td>128.0.0.0/24</td>
+<td><strong>10000000 00000000 00000000</strong> 00000000</td>
+<td>128.0.0.0 ~ 128.0.0.255</td>
+</tr>
+<tr>
+<td>198.128.128.192/27</td>
+<td><strong>11000110 10000000 10000000 110</strong>00000</td>
+<td>192.128.128.192 ~ 198.128.128.223</td>
+</tr>
+</tbody>
+</table>
+<p>前缀可以用来表示一个地址的范围，而早期的分类寻址方案易于被这个方案覆盖。比如分类的A类和B类网络号可分别用前缀长度/8 和 /16 来表示。<br><br></p>
+<h3 id="4-2-聚合"><a href="#4-2-聚合" class="headerlink" title="4.2 聚合"></a>4.2 聚合</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//www.kuaizhan.com/common/encode-png?large=true&data=http://cloudsmiles.site/posts/ip-network.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/posts/encryption.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          密码学入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/second_update.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">更新中...</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+ 
+   <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+	  	clientID: '0f5edc9b0a3a9bae251a',
+		clientSecret: '',
+	 	repo: 'blog-comments',
+		owner: 'cloudsmiles',
+		admin: [''],
+		id: 'Fri May 04 2018 22:43:00 GMT+0800',
+		distractionFreeMode: 'true'
+	})
+	gitalk.render('gitalk-container') 
+}
+</script>
+
+			   
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2023 cloudsmiles
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+</body>
+</html>

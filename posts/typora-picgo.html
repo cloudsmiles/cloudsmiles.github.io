@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="dns-prefetch" href="http://cloudsmiles.site">
+  <title>typora+picGo+gitee，快乐写blog利器！ | cloudsmiles的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="曾经，曾经有一个想法困扰着我，不仅困扰着我写blog，还拖累了我很多想法无法兑现。一个小男孩站在橱窗外，透过玻璃窗，朦胧的只可以看到，也只可以想，想拥有里面闪闪发光的玩具，男孩知道，从门口到玩具的短短几米，即使让时间停顿，那里的距离比上万个光年还要遥远。而现在，即使擦肩而过，也不想留下遗憾，今天的教程就开始了！">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typora+picGo+gitee，快乐写blog利器！">
+<meta property="og:url" content="http://cloudsmiles.site/posts/typora-picgo.html">
+<meta property="og:site_name" content="cloudsmiles的博客">
+<meta property="og:description" content="曾经，曾经有一个想法困扰着我，不仅困扰着我写blog，还拖累了我很多想法无法兑现。一个小男孩站在橱窗外，透过玻璃窗，朦胧的只可以看到，也只可以想，想拥有里面闪闪发光的玩具，男孩知道，从门口到玩具的短短几米，即使让时间停顿，那里的距离比上万个光年还要遥远。而现在，即使擦肩而过，也不想留下遗憾，今天的教程就开始了！">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005051.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005347.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005538.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005450.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714010145.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714010515.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714011215.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714011212.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714011434.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714012117.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714012313.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714012608.png">
+<meta property="og:updated_time" content="2023-05-17T06:16:09.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="typora+picGo+gitee，快乐写blog利器！">
+<meta name="twitter:description" content="曾经，曾经有一个想法困扰着我，不仅困扰着我写blog，还拖累了我很多想法无法兑现。一个小男孩站在橱窗外，透过玻璃窗，朦胧的只可以看到，也只可以想，想拥有里面闪闪发光的玩具，男孩知道，从门口到玩具的短短几米，即使让时间停顿，那里的距离比上万个光年还要遥远。而现在，即使擦肩而过，也不想留下遗憾，今天的教程就开始了！">
+<meta name="twitter:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005051.png">
+  
+    <link rel="alternative" href="/atom.xml" title="cloudsmiles的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #2E95F6"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/avatar.jpg" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cloudsmiles</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">屠龙勇士终被恶龙吞噬</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/杂记/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #2E95F6"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">cloudsmiles</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>屠龙勇士终被恶龙吞噬<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/杂记/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-typora-picgo" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      typora+picGo+gitee，快乐写blog利器！
+    </h1>
+  
+
+        
+        <a href="/posts/typora-picgo.html" class="archive-article-date">
+  	<time datetime="2021-07-13T16:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>曾经，曾经有一个想法困扰着我，不仅困扰着我写blog，还拖累了我很多想法无法兑现。一个小男孩站在橱窗外，透过玻璃窗，朦胧的只可以看到，也只可以想，想拥有里面闪闪发光的玩具，男孩知道，从门口到玩具的短短几米，即使让时间停顿，那里的距离比上万个光年还要遥远。而现在，即使擦肩而过，也不想留下遗憾，今天的教程就开始了！</p>
+<p><hr><br><a id="more"></a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写blog工序比较繁琐，特别是遇到需要上传图片的时候，把图片上传到图床，然后复制链接到markdown文档，还得要调一下大小，排一下版，这个过程枯燥无味还浪费了很多时间，于是就有个想法，能不能解决以下的问题呢：</p>
+<ul>
+<li>有一个工具可以自动上传图片到图床，然后返回链接，这样就省了我上传图片的工序</li>
+<li>在markdown编辑器就可以复制粘贴图片，然后使用这个工具进行图片上传</li>
+<li>在markdown编辑器顺便调整一下图片大小</li>
+</ul>
+<p>在我百度了之后，确实有那么一套成熟的方案（可喜可贺），typora+picGo就可以解决我刚刚说的三点烦恼，而picGo搭配gitee，就可以实现国内+稳定+免费自用图床</p>
+<p>以下开始介绍怎么使用，and我使用的系统是macOS，如果有使用windows系统的其实也是类似的</p>
+<h2 id="picGo-gitee搭建自有图床"><a href="#picGo-gitee搭建自有图床" class="headerlink" title="picGo+gitee搭建自有图床"></a>picGo+gitee搭建自有图床</h2><blockquote>
+<p>picGo支持多种图床平台，微博，七牛云，腾讯云COS，又拍云，GitHub等，功能强大，而且简单易用</p>
+</blockquote>
+<h3 id="下载picGo"><a href="#下载picGo" class="headerlink" title="下载picGo"></a>下载picGo</h3><p>我们先把它下载下来，以下是下载地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/Molunerfinn/PicGo/releases</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005051.png" alt="image-20210714005034200" style="zoom: 50%;"></p>
+<p>我因为是macOS系统，所以选择dmg格式</p>
+<h3 id="运行picGo"><a href="#运行picGo" class="headerlink" title="运行picGo"></a>运行picGo</h3><p>正常下载之后，打开会发现picGo没有显示出来，其实它是隐藏起来了，藏在上面的状态栏</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005347.png" alt="image-20210714005317310"></p>
+<p>点击【打开详细窗口】就会显示界面</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005538.png" alt="image-20210714005532521" style="zoom:67%;"></p>
+<h3 id="装gitee插件"><a href="#装gitee插件" class="headerlink" title="装gitee插件"></a>装gitee插件</h3><p>可以看到picGo支持多种图床，但我们这里只讲解gitee(码云)的使用，因为其他平台有上传大小的限制，而且我也需要一个地方备份图片，依赖代码托管工具就很贴心了。picGo支持gitee，只需要装上插件就好了，在【插件设置】，输入<strong>gitee</strong></p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714005450.png" alt="image-20210714005447406"></p>
+<p>安装完插件之后，在【PicGo设置】可以找到【Gitee图床】，勾上就可以在【图床设置】看到gitee的图床配置</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714010145.png" alt="image-20210714010141850"></p>
+<h3 id="gitee图床配置"><a href="#gitee图床配置" class="headerlink" title="gitee图床配置"></a>gitee图床配置</h3><p>在下图可以看到，配置需要知道owner(用户名)和repo(仓库名)，以及token(访问token)，path为保存的文件夹，可以自己定义，不设置就是在根目录</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714010515.png" alt="image-20210714010452960"></p>
+<p>这需要我们去gitee注册一个账号，然后建立一个仓库，比如像我建立的仓库，用户名是cloudsmiles，也就是owner，仓库名是pic，也就是repo，path填上pictures，所以仓库里也建了一个pictures目录用于保存</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714011215.png" alt="image-20210714010928948"></p>
+<p>token如何生成呢？在个人设置里，可以找到【私人令牌】，然后点击【生成新令牌】，选择仓库修改发布权限，然后就会得到一个token(需要注意保存，因为token只有初次生成会展示，之后的页面无法展示)</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714011212.png" alt="image-20210714011204546" style="zoom:67%;"></p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714011434.png" alt="image-20210714011143974"></p>
+<p>至此，我们使用gitee图床，就可以随时上传图片到git仓库，然后得到访问链接</p>
+<h2 id="typora-picGo-写blog快速上传图片"><a href="#typora-picGo-写blog快速上传图片" class="headerlink" title="typora+picGo 写blog快速上传图片"></a>typora+picGo 写blog快速上传图片</h2><blockquote>
+<p>typora面对传统的markdown编辑器，优势在于渲染是在同一个界面内的，可以快速编辑而浏览效果，而且支持picGo app，可以便捷上传图片</p>
+</blockquote>
+<h3 id="下载typora"><a href="#下载typora" class="headerlink" title="下载typora"></a>下载typora</h3><p>选择自身合适的版本进行下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.typora.io/#download</span><br></pre></td></tr></table></figure>
+<h3 id="配置typora"><a href="#配置typora" class="headerlink" title="配置typora"></a>配置typora</h3><p>如图，点击【偏好设置】</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714012117.png" alt="image-20210714012109034" style="zoom: 67%;"></p>
+<p>在【图像】tab，【上传服务设定】选择【PicGo.app】,这样typora就会自动去找我们已经安装好的picGo工具</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714012313.png" alt="image-20210714012310497"></p>
+<h3 id="初次尝试"><a href="#初次尝试" class="headerlink" title="初次尝试"></a>初次尝试</h3><p>将图片复制到编辑器里，就会显示【上传文件】选项，点击上传成功后，就可以说明整套工具都配置好了，可以愉快的玩耍了，再也不用担忧上传图片阻碍了写博客的节奏~，而且偷偷的说一句，typora也是markdown编辑的神器</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210714012608.png" alt="image-20210714012605305"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那个想法其实很简单可以破灭，男孩不用多想，占有不过是拥有的一种手段，通过武装自己，一样可以拥有想要的，下次，下次我会结合hexo的工作原理，希望再进一步提升写blog的效率，远方很远，天上很上，而人也很人，我也很我，nice！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//www.kuaizhan.com/common/encode-png?large=true&data=http://cloudsmiles.site/posts/typora-picgo.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/posts/hexo-admin.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hexo-admin，高效管理blog发布
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/my_message.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">给我的信</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+ 
+   <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+	  	clientID: '0f5edc9b0a3a9bae251a',
+		clientSecret: '',
+	 	repo: 'blog-comments',
+		owner: 'cloudsmiles',
+		admin: [''],
+		id: 'Wed Jul 14 2021 00:19:00 GMT+0800',
+		distractionFreeMode: 'true'
+	})
+	gitalk.render('gitalk-container') 
+}
+</script>
+
+			   
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2023 cloudsmiles
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+</body>
+</html>

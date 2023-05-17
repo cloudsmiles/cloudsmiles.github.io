@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="dns-prefetch" href="http://cloudsmiles.site">
+  <title>密码学入门 | cloudsmiles的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近群里有个人去腾讯面试，被考试官问到，http和https的区别，还问到密码学的知识，他说不太懂，我有点惊讶，抛开密码学的层面，这也是计算机网络的基本内容（虽然我也是上一周才回顾到），于是就有了这篇文章，拾人牙慧，锤人头胀。本文只是简单介绍密码学的基础知识，顺便带出https的原理，以https为例，可以发现但很多加密的工具也是由基础的工具叠加组合的。">
+<meta name="keywords" content="密码学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学入门">
+<meta property="og:url" content="http://cloudsmiles.site/posts/encryption.html">
+<meta property="og:site_name" content="cloudsmiles的博客">
+<meta property="og:description" content="最近群里有个人去腾讯面试，被考试官问到，http和https的区别，还问到密码学的知识，他说不太懂，我有点惊讶，抛开密码学的层面，这也是计算机网络的基本内容（虽然我也是上一周才回顾到），于是就有了这篇文章，拾人牙慧，锤人头胀。本文只是简单介绍密码学的基础知识，顺便带出https的原理，以https为例，可以发现但很多加密的工具也是由基础的工具叠加组合的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/01/KHZkNt.jpg">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/04/Kvifpt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/01/KHU7uj.png">
+<meta property="og:updated_time" content="2023-05-17T06:16:09.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="密码学入门">
+<meta name="twitter:description" content="最近群里有个人去腾讯面试，被考试官问到，http和https的区别，还问到密码学的知识，他说不太懂，我有点惊讶，抛开密码学的层面，这也是计算机网络的基本内容（虽然我也是上一周才回顾到），于是就有了这篇文章，拾人牙慧，锤人头胀。本文只是简单介绍密码学的基础知识，顺便带出https的原理，以https为例，可以发现但很多加密的工具也是由基础的工具叠加组合的。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/01/KHZkNt.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="cloudsmiles的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #2E95F6"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/avatar.jpg" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cloudsmiles</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">屠龙勇士终被恶龙吞噬</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/杂记/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #2E95F6"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">cloudsmiles</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>屠龙勇士终被恶龙吞噬<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/杂记/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-encryption" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      密码学入门
+    </h1>
+  
+
+        
+        <a href="/posts/encryption.html" class="archive-article-date">
+  	<time datetime="2019-11-01T07:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近群里有个人去腾讯面试，被考试官问到，http和https的区别，还问到密码学的知识，他说不太懂，我有点惊讶，抛开密码学的层面，这也是计算机网络的基本内容（虽然我也是上一周才回顾到），于是就有了这篇文章，拾人牙慧，锤人头胀。<br>本文只是简单介绍密码学的基础知识，顺便带出https的原理，以https为例，可以发现但很多加密的工具也是由基础的工具叠加组合的。</p>
+<p><hr><br><a id="more"></a></p>
+<h2 id="1-对称密码"><a href="#1-对称密码" class="headerlink" title="1. 对称密码"></a>1. 对称密码</h2><p>对称密码（symmetric cryptography），是指在加密和解密的时候都使用同一密钥的方式。</p>
+<p>它的优点在于巨大的密钥空间能够抵御暴力破解，而且加解密运算效率高，但缺点是密钥配送问题，就是指A，B通讯，信息是加密了，但是密钥怎么在不暴露的情况下让A和B都知道。</p>
+<p>常见使用的算法：<a href="https://baike.baidu.com/item/DES" target="_blank" rel="noopener">DES（Data Encryption Standard）</a>，<a href="https://baike.baidu.com/item/%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86/468774?fromtitle=aes&amp;fromid=5903" target="_blank" rel="noopener">AES（Advanced Encryption Standard）</a></p>
+<p>用途：加密信息<br><br></p>
+<h2 id="2-公钥密码"><a href="#2-公钥密码" class="headerlink" title="2. 公钥密码"></a>2. 公钥密码</h2><p>公钥密码（public-key cryptography），是指在加密和解密的时候使用不同密钥的方式，与对称加密正好相反，所以也被称为非对称密码（asymmetric cryptography）。</p>
+<p>它是由公钥（public key）和私钥（private key）组成，加密过程是A向B发送message时，利用B的public key对message加密；B接受message，利用B的private key对message解密。</p>
+<p>它的优点是解决了密钥配送问题（公钥可以公开），缺点是加密算法效率低（无法直接用于信息加密），存在中间人攻击，指的是B虽然能解密成功，但无法确认对方就是A，也有可能是其他人伪装了，挟持了message向B发送。</p>
+<p>常见使用的算法：<a href="https://baike.baidu.com/item/RSA%E7%AE%97%E6%B3%95?fromtitle=RSA&amp;fromid=210678" target="_blank" rel="noopener">RSA</a></p>
+<p>用途：<strong>加密对称加密的密钥，身份认证</strong></p>
+<h3 id="2-1-实际案例（github-ssh登录配置）"><a href="#2-1-实际案例（github-ssh登录配置）" class="headerlink" title="2.1 实际案例（github ssh登录配置）"></a>2.1 实际案例（github ssh登录配置）</h3><p>我们经常会需要在github上配置SSH key，配置了以后，就不需要用户名和密码，也能方便的push代码。（github有两种方式克隆代码，ssh和https，以至于push代码会有不一样的认证）</p>
+<p>首先我们使用命令生成key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>通过一些步骤，成功生成之后，我们就能在当前目录，找到id_rsa.pub和id_rsa文件，就是公钥和私钥。<br>把公钥粘贴到github上去，就完成了github ssh key的配置</p>
+<p><img src="https://s2.ax1x.com/2019/11/01/KHZkNt.jpg" alt="avatar"></p>
+<blockquote>
+<p>ssh登录实际上是利用了非对称密码的逆过程，达到了身份认证的效果（可以辨别对方是谁），从而实现安全可靠的登录，在<strong><a href="#4">数字签名</a></strong>有细讲</p>
+</blockquote>
+<p><br></p>
+<h2 id="3-单向散列函数"><a href="#3-单向散列函数" class="headerlink" title="3. 单向散列函数"></a>3. 单向散列函数</h2><p>后面讲到的技术都并不是直接用于加密的，单向数列函数通过一个不可逆的函数y=f(x)将x映射为y，通过判断y是否变化，来判断x是否被篡改。比如我们常用的MD5算法，就是经常用来判断传输数据是否一致。单向散列函数又被称作为HASH算法。</p>
+<p>它的优点是算法效率高，可以辨别篡改，但缺点是没法识别身份，不知道信息来源。</p>
+<p>常见使用的算法：<a href="https://baike.baidu.com/item/MD5" target="_blank" rel="noopener">MD5（Message-Digest Algorithm）</a>，<a href="https://baike.baidu.com/item/SHA-1?fromtitle=SHA1&amp;fromid=8812671" target="_blank" rel="noopener">SHA1（Secure Hash Algorithm）</a></p>
+<p>用途：判断篡改，消息认证码，数字签名等</p>
+<blockquote>
+<p>MD5和SHA1经常被用来当做加密算法，但本身两者都是信息摘要的算法，意思就是摘录信息的指纹信息，并没有加密的用法。<br>而且MD5因为被验证会有碰撞出现，所以现在更为安全的是使用SHA1算法</p>
+</blockquote>
+<p><br></p>
+<h2 id="4-数字签名"><a href="#4-数字签名" class="headerlink" title="4. 数字签名"></a><a name="4">4. 数字签名</a></h2><p>由于非对称加密无法抵御中间人攻击，所以需要有一种方法识别对方的身份，而RSA的牛逼之处来了，它的逆过程，正好可以验证签名</p>
+<p>它的逆过程是A的private key对message加密得到数字签名sign，传输给B message和sign，B用A的public key对sign解密回message，对比message是否一致，就能知道对方是否为A的身份（private key只有A知道）。但实际的使用中，RSA的算法效率不高，所以还需要散列函数处理message，这样加密的时候就只是message的摘要信息而已。</p>
+<blockquote>
+<p>这也是为什么github需要保存用户的public key，能够识别该用户而不需要再额外认证</p>
+</blockquote>
+<p>它的优点是能够识别篡改和伪装，还可以防止否认，缺点是由于用到了公钥密码，还是没法理想的解决中间人攻击，因此有证书和颁发证书的认证机构的概念（虽然能识别是A，但public key还是有可能被盗用，所以需要第三方的机构去保证public key的安全性）。</p>
+<p>常见使用的算法：RSA+SHA</p>
+<p>用途：需要身份认证的场景</p>
+<h3 id="4-1-证书"><a href="#4-1-证书" class="headerlink" title="4.1 证书"></a>4.1 证书</h3><p>通过上面的讲解可以看出，密码学的基础是对称密码+公钥密码，但它们仍然无法抵御中间人攻击，也即M想办法阻断A和B的直接通信，同时伪装成B然后与A通信，伪装成A然后与B通信。这个问题在密码学看来就是个死循环，因此需要引入额外的技术——社会学知识：让公钥以及数字签名技术成为一种社会性的基础设施，即公钥基础设施(public key intrastructure)，简称PKI。而证书，就是将公钥当作一条消息，由一个可信的第三方对其签名后所得到的公钥。</p>
+<p><br></p>
+<h2 id="5-消息认证码"><a href="#5-消息认证码" class="headerlink" title="5. 消息认证码"></a>5. 消息认证码</h2><p>这里不细研究</p>
+<p><br></p>
+<h2 id="6-伪随机数生成器"><a href="#6-伪随机数生成器" class="headerlink" title="6. 伪随机数生成器"></a>6. 伪随机数生成器</h2><p>密钥的由来以及各种算法参数的由来，都是由特定的序列来生成的，所以攻击者很容易推测出密钥，所以还需要有随机数，让攻击者没法推测出来。至于随机数，因为计算机是不可能真正的随机，所以只能根据一定的算法，给一个输入（种子），输出一个伪随机值，但每次的种子一样，输出的随机数序列也是一样的。</p>
+<p>至于随机数的其他学问，就暂不在这里细讲了。</p>
+<p><br></p>
+<h2 id="7-HTTPS"><a href="#7-HTTPS" class="headerlink" title="7. HTTPS"></a>7. HTTPS</h2><p>研究了那么大个圈子，密码学基础究竟跟HTTPS有什么联系呢？</p>
+<p>HTTPS（Hyper Text Transfer Protocol Secure），我们也听到其他的叫法SSL（Secure Sockets Layer），TLS（Transport Layer Security），所以我们首先得要知道他们分别的含义。</p>
+<h3 id="7-1-HTTPS是什么？"><a href="#7-1-HTTPS是什么？" class="headerlink" title="7.1 HTTPS是什么？"></a>7.1 HTTPS是什么？</h3><p>一句话：HTTP的安全版本</p>
+<p>百度百科：是以安全为目标的 HTTP 通道，在HTTP的基础上通过传输加密和身份认证保证了传输过程的安全性。HTTPS 在HTTP 的基础下加入SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。</p>
+<h3 id="7-2-SSL是什么？"><a href="#7-2-SSL是什么？" class="headerlink" title="7.2 SSL是什么？"></a>7.2 SSL是什么？</h3><p>看一副图就明白了，SSL就是夹在应用层和传输层的中间一层</p>
+<p><img src="https://s2.ax1x.com/2019/11/04/Kvifpt.png" alt="avatar"></p>
+<h3 id="7-3-TLS又是什么？"><a href="#7-3-TLS又是什么？" class="headerlink" title="7.3 TLS又是什么？"></a>7.3 TLS又是什么？</h3><p>TLS的前身是SSL，相当于SSL某个版本之后，再发展的最新分支，所以又并称为SSL/TLS</p>
+<blockquote>
+<p>HTTPS可以看作是HTTP协议+SSL/TLS层</p>
+</blockquote>
+<h3 id="7-4-为什么要用HTTPS"><a href="#7-4-为什么要用HTTPS" class="headerlink" title="7.4 为什么要用HTTPS?"></a>7.4 为什么要用HTTPS?</h3><p>不使用SSL/TLS的HTTP通信，就是不加密的通信。所有信息明文传播，带来了三大风险。</p>
+<pre><code>（1） 窃听风险（eavesdropping）：第三方可以获知通信内容。
+
+（2） 篡改风险（tampering）：第三方可以修改通信内容。
+
+（3） 冒充风险（pretending）：第三方可以冒充他人身份参与通信。
+</code></pre><p>SSL/TLS协议是为了解决这三大风险而设计的，希望达到：</p>
+<pre><code>（1） 所有信息都是加密传播，第三方无法窃听。
+
+（2） 具有校验机制，一旦被篡改，通信双方会立刻发现。
+
+（3） 配备身份证书，防止身份被冒充。
+</code></pre><h3 id="7-4-工作流程"><a href="#7-4-工作流程" class="headerlink" title="7.4 工作流程"></a>7.4 工作流程</h3><blockquote>
+<p>HTTPS其实是组合用了密码学的基础知识，解决了三大风险，所以是一个很好的例子去体会密码学的价值，我们学习HTTPS的过程，就是重温并应用密码学的过程。</p>
+</blockquote>
+<p>首先看HTTPS的工作流程</p>
+<p><img src="https://s2.ax1x.com/2019/11/01/KHU7uj.png" alt="avatar"></p>
+<p>图上的流程可以概括为两部分：（也被称为<strong>握手阶段</strong>）</p>
+<p>（1） 客户端向服务器端索要并验证公钥，对应图上①+②+③+④一部分</p>
+<p>（2） 双方协商生成”对话密钥”。对应图上④一部分+⑤+⑥+⑦+⑧</p>
+<pre><code>① 客户端发起HTTPS请求，同时告知服务端自身支持使用的加密算法和HASH算法
+
+②+③ 服务端接收之后，从中选择一种加密算法和HASH算法，以证书的形式返回客户端，同时证书还包含公钥，颁证机构，网址，失效日期等
+
+④+⑤ 客户端接收证书之后，会做以下几件事
+     1. 通过第三方机构CA，验证证书的合法性（间接验证公钥的合法性）
+     2. 生成随机数用作加密的“预主密钥”（pre-master key），再通过服务端的公钥，对预主密钥进行加密（混合加密，public_key保证预主密钥不被暴露）
+     3. 握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。    
+
+⑥+⑦ 服务端接收信息
+     1. 用自己的私钥解码得到预主密钥，通过预主密钥生成本次会话的“会话密钥”（session key）
+     2. 然后向客户端发送握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。
+</code></pre><p>至此，整个握手阶段全部结束，客户端与服务器进入加密通信，就完全是使用普通的HTTP协议，只不过用“会话密钥”加密内容。</p>
+<p><br></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>密码学基础知识包含对称加密，非对称加密，HASH加密，数字签名，信息认证，随机数等部分</li>
+<li>HTTPS使用了三种密码学技术解决了三大威胁，分别是混合加密（对称+非对称），数字签名，信息校验（HASH算法）</li>
+<li>本文只是简略探讨了密码学的基础知识和实际的应用，真正的知识还是很浩瀚无边，但是我们能从中体会到，很多的安全学问，其实都是基于一些基础知识组装改良而成的，想必其他的知识领域也是如此。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">密码学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//www.kuaizhan.com/common/encode-png?large=true&data=http://cloudsmiles.site/posts/encryption.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/posts/pokemon-cartoon.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          宝可梦之旅
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/ip-network.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">IP初全认识</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+ 
+   <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+	  	clientID: '0f5edc9b0a3a9bae251a',
+		clientSecret: '',
+	 	repo: 'blog-comments',
+		owner: 'cloudsmiles',
+		admin: [''],
+		id: 'Fri Nov 01 2019 15:28:00 GMT+0800',
+		distractionFreeMode: 'true'
+	})
+	gitalk.render('gitalk-container') 
+}
+</script>
+
+			   
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2023 cloudsmiles
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+</body>
+</html>

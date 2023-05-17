@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="dns-prefetch" href="http://cloudsmiles.site">
+  <title>hexo-admin，高效管理blog发布 | cloudsmiles的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工欲善其事,必先利其器。以前弄hexo的blog发布，得要打一堆的命令，还要把blog的原型提交到github仓库，以作备份。后来找到了hexo-admin插件，用上之后，就会发现可以大大提高发布的效率，一键发布，安枕无忧，这就是技术的乐趣">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo-admin，高效管理blog发布">
+<meta property="og:url" content="http://cloudsmiles.site/posts/hexo-admin.html">
+<meta property="og:site_name" content="cloudsmiles的博客">
+<meta property="og:description" content="工欲善其事,必先利其器。以前弄hexo的blog发布，得要打一堆的命令，还要把blog的原型提交到github仓库，以作备份。后来找到了hexo-admin插件，用上之后，就会发现可以大大提高发布的效率，一键发布，安枕无忧，这就是技术的乐趣">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210715024929.png">
+<meta property="og:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210715030845.png">
+<meta property="og:updated_time" content="2023-05-17T06:16:09.670Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo-admin，高效管理blog发布">
+<meta name="twitter:description" content="工欲善其事,必先利其器。以前弄hexo的blog发布，得要打一堆的命令，还要把blog的原型提交到github仓库，以作备份。后来找到了hexo-admin插件，用上之后，就会发现可以大大提高发布的效率，一键发布，安枕无忧，这就是技术的乐趣">
+<meta name="twitter:image" content="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210715024929.png">
+  
+    <link rel="alternative" href="/atom.xml" title="cloudsmiles的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+</html>
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #2E95F6"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/avatar.jpg" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cloudsmiles</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">屠龙勇士终被恶龙吞噬</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/杂记/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #2E95F6"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/assets/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">cloudsmiles</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>屠龙勇士终被恶龙吞噬<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cloudsmiles" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weixin" target="_blank" href="/assets/webwxgetmsgimg.jpg" title="weixin"><i class="icon-weixin"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/杂记/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-hexo-admin" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo-admin，高效管理blog发布
+    </h1>
+  
+
+        
+        <a href="/posts/hexo-admin.html" class="archive-article-date">
+  	<time datetime="2021-07-14T19:14:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>工欲善其事,必先利其器。以前弄hexo的blog发布，得要打一堆的命令，还要把blog的原型提交到github仓库，以作备份。后来找到了hexo-admin插件，用上之后，就会发现可以大大提高发布的效率，一键发布，安枕无忧，这就是技术的乐趣</p>
+<hr>
+
+<a id="more"></a>
+<h2 id="安装hexo-admin"><a href="#安装hexo-admin" class="headerlink" title="安装hexo-admin"></a>安装hexo-admin</h2><blockquote>
+<p>hexo-admin插件只能适用于hexo的blog，hexo是什么呢，简单来说就是静态网站生成器，根据markdown还有一些模板js代码，生成出静态的html的文件，而本人用的就是hexo生成器，所以默认使用的人已经安装hexo和npm</p>
+</blockquote>
+<p>安装hexo-admin很简单，只是简单的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-admin --save</span><br></pre></td></tr></table></figure>
+<h2 id="使用hexo-admin"><a href="#使用hexo-admin" class="headerlink" title="使用hexo-admin"></a>使用hexo-admin</h2><p>使用的过程也很简单，先是启动hexo的后台进程，让它可以通过localhost:4000访问网站</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>然后打开网址<code>localhost:4000/admin</code>，可以看到已经进入了基于hexo的blog管理后台，上面有<code>Posts</code>tab，浏览和新建文章，<code>Pages</code>tab，新建页面，<code>Deploy</code>tab可以一键发布</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210715024929.png" alt="image-20210715024922995"></p>
+<p>至此，我们可以在管理后台很轻松的写文章，然后进行发布，但是发布需要我们再手动配置一下</p>
+<h2 id="配置一键发布"><a href="#配置一键发布" class="headerlink" title="配置一键发布"></a>配置一键发布</h2><p>我们希望自动发布达到的效果是，自动完成以下工作：</p>
+<ul>
+<li>blog的本地仓库提交代码，push到远程的github仓库，以作备份</li>
+<li>利用hexo的发布命令，<code>hexo g</code>，<code>hexo d</code>来生成静态网站，push到远程仓库</li>
+</ul>
+<h3 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改_config.yml</h3><p>第一步需要修改本地的<code>_config.yml</code>文件，添加以下配置，意思就是管理后台的deploy会触发执行<code>admin_script.sh</code>脚本文件，这里配置的文件名和文件路径是自定义的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># hexo-admin配置</span><br><span class="line">admin:</span><br><span class="line">  deployCommand: &apos;./admin_script.sh&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="编写自动发布脚本"><a href="#编写自动发布脚本" class="headerlink" title="编写自动发布脚本"></a>编写自动发布脚本</h3><p>自动发布的脚本内容也是自定义的，大家可以参考我编写的脚本内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env sh</span><br><span class="line">git add .</span><br><span class="line">git commit -m &apos;update&apos;</span><br><span class="line">git push origin master</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>前三行是完成git仓库的本地提交，后两句就是hexo的发布，都比较容易理解，我就不一一解释了</p>
+<h3 id="hexo的发布配置"><a href="#hexo的发布配置" class="headerlink" title="hexo的发布配置"></a>hexo的发布配置</h3><p>hexo的发布配置也是刚才的<code>_config,yml</code>文件，如下所示，我这里配了两个仓库地址，一个是境外的github，一个是国内的coding，目的就是可以利用域名解析，国外访问就解析到github，国内访问就解析到国内仓库，加快访问速度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo:</span><br><span class="line">    github: git@github.com:cloudsmiles/cloudsmiles.github.io.git</span><br><span class="line">    coding: git@e.coding.net:cloudsmiles/cloudsmiles.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="最后一手"><a href="#最后一手" class="headerlink" title="最后一手"></a>最后一手</h2><p>在管理后台，切换到<code>Deploy</code>tab，点击<code>Deploy</code>按钮，就能把我们刚才的步骤都串联起来。It is easy to deploy now!</p>
+<p><img src="https://gitee.com/cloudsmiles/pic/raw/master/pictures/20210715030845.png" alt="image-20210715030842066" style="zoom:67%;"></p>
+<p>hexo-admin的运用，我相信会减少了我的很多重复操作，真正解放生产力到写blog当中，如果还有下一期的话，我会着重介绍hexo的优化，还有hexo嵌入视频，音乐。但可能关于blog的教程也会告一段落了，因为我本人不熟悉前端，也基本上玩不出什么花样了，能够提升一下效率我已经很满意了😁</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//www.kuaizhan.com/common/encode-png?large=true&data=http://cloudsmiles.site/posts/hexo-admin.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/posts/typora-picgo.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">typora+picGo+gitee，快乐写blog利器！</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+ 
+   <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+	  	clientID: '0f5edc9b0a3a9bae251a',
+		clientSecret: '',
+	 	repo: 'blog-comments',
+		owner: 'cloudsmiles',
+		admin: [''],
+		id: 'Thu Jul 15 2021 03:14:24 GMT+0800',
+		distractionFreeMode: 'true'
+	})
+	gitalk.render('gitalk-container') 
+}
+</script>
+
+			   
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2023 cloudsmiles
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+  </div>
+</body>
+</html>
