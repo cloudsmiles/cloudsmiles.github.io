@@ -307,28 +307,23 @@
   
 
   
- 
-   <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
-if(true){
-	var gitalk = new Gitalk({
-	  	clientID: '0f5edc9b0a3a9bae251a',
-		clientSecret: '',
-	 	repo: 'blog-comments',
-		owner: 'cloudsmiles',
-		admin: [''],
-		id: 'Thu Jul 15 2021 03:14:24 GMT+0800',
-		distractionFreeMode: 'true'
-	})
-	gitalk.render('gitalk-container') 
-}
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//jjeejj.github.io/css/gitment.css">
+<script src="//www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "hexo-admin，高效管理blog发布",
+  owner: 'cloudsmiles',
+  repo: 'blog-comments',
+  oauth: {
+    client_id: '0f5edc9b0a3a9bae251a',
+    client_secret: 'ae19634a591b5702156140489f45d14b168c1387101',
+  },
+})
+gitment.render('gitment-ctn')
 </script>
 
-			   
+  
 
 
           </div>
